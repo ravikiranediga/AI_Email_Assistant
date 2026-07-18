@@ -2,6 +2,12 @@ import os
 
 from dotenv import load_dotenv
 from google import genai
+import google
+
+print("GOOGLE PATH:")
+print(google.__file__)
+
+from google import genai
 
 load_dotenv()
 
