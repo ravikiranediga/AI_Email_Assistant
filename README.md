@@ -1,134 +1,131 @@
 # 📧 AI Email Assistant
 
-An AI-powered email generation platform built using **Streamlit, FastAPI, Google Gemini API, and SQLite**. The application enables users to generate professional emails in multiple tones, maintain email history, download generated content, and analyze usage through an interactive analytics dashboard.
+An AI-powered Email Generation Platform built using **Streamlit, FastAPI, Google Gemini AI, and SQLite**. This application helps users generate professional emails in different tones, manage email history, and view usage analytics through an intuitive dashboard.
 
 ---
 
-## 🚀 Features
+# 🚀 Live Demo
 
-### AI Email Generation
+### Frontend (Streamlit)
 
-* Generate complete professional emails using Google Gemini.
-* Support for multiple writing tones:
+https://ai-email-assistant-gemini.streamlit.app/
 
-  * Professional
-  * Formal
-  * Friendly
-  * Polite
-  * Confident
+### Backend API (FastAPI + Render)
 
-### Email Templates
+https://ai-email-assistant-7ged.onrender.com
 
-* Predefined templates for common use cases:
+### API Documentation (Swagger)
 
-  * Internship Follow-Up
-  * Job Application
-  * Leave Request
-  * Meeting Request
-  * Thank You Email
-
-### History Tracking
-
-* Automatically stores generated emails.
-* Persistent storage using SQLite.
-* View previous emails directly from the sidebar.
-
-### Analytics Dashboard
-
-* Total emails generated.
-* Most frequently used tone.
-* Tone distribution chart.
-* Recent email activity.
-
-### Download Support
-
-* Download generated emails as text files.
-
-### User-Friendly Interface
-
-* Built using Streamlit.
-* Responsive two-column layout.
-* Real-time email generation.
+https://ai-email-assistant-7ged.onrender.com/docs
 
 ---
 
-## 🏗️ System Architecture
+# 📌 Project Overview
 
-User Input (Streamlit)
+AI Email Assistant is a full-stack AI application that automates professional email writing using Google's Gemini AI model.
 
-↓
+Users simply provide a description of the email they want to write, choose a preferred tone, and the system generates a complete ready-to-send email.
 
-FastAPI Backend
-
-↓
-
-Gemini API
-
-↓
-
-Generated Email
-
-↓
-
-SQLite Database
-
-↓
-
-Analytics Dashboard
+The application also stores generated emails in SQLite and provides analytics such as total emails generated, tone usage statistics, and recent email activity.
 
 ---
 
-## 🛠️ Technology Stack
+# ✨ Features
 
-### Frontend
+## AI Email Generation
+
+* Generates complete professional emails
+* Uses Google Gemini AI
+* Ready-to-send output
+
+## Multiple Email Tones
+
+Supported tones:
+
+* Professional
+* Formal
+* Friendly
+* Polite
+* Confident
+* Apologetic
+* Thankful
+* Persuasive
+
+## Email Templates
+
+Pre-built templates for common business scenarios.
+
+## Download Generated Emails
+
+Users can download generated emails as text files.
+
+## Email History Tracking
+
+Stores generated emails with timestamps.
+
+## SQLite Database
+
+Persistent local database storage.
+
+## Analytics Dashboard
+
+Provides:
+
+* Total Emails Generated
+* Most Used Tone
+* Tone Distribution
+* Recent Email Activity
+
+## API-Based Architecture
+
+Frontend and backend are separated using REST APIs.
+
+---
+
+# 🛠️ Technology Stack
+
+## Frontend
 
 * Streamlit
 
-### Backend
+## Backend
 
 * FastAPI
 * Uvicorn
 
-### AI Model
-
-* Google Gemini API
-
-### Database
+## Database
 
 * SQLite
 
-### Libraries
+## AI Model
 
-* Requests
-* Python Dotenv
-* Collections
-* SQLite3
+* Google Gemini 2.5 Flash
+
+## Programming Language
+
+* Python
+
+## Deployment
+
+* Streamlit Community Cloud
+* Render
 
 ---
 
-## 📂 Project Structure
+# 📂 Project Structure
 
+```text
 AI_Email_Assistant/
 
 ├── api/
-
 │   └── main.py
 
-│
-
-├── database/
-
-│   ├── db.py
-
-│   └── analytics.py
-
-│
-
 ├── services/
-
 │   └── email_generator.py
 
-│
+├── database/
+│   ├── db.py
+│   └── analytics.py
 
 ├── app.py
 
@@ -136,31 +133,132 @@ AI_Email_Assistant/
 
 ├── requirements.txt
 
-├── .env
+├── README.md
 
-├── emails.db
-
-└── README.md
+└── .gitignore
+```
 
 ---
 
-## ⚙️ Installation
+# ⚙️ System Architecture
 
-### Clone Repository
+```text
+User
+  │
+  ▼
+Streamlit Frontend
+  │
+  ▼
+FastAPI Backend
+  │
+  ▼
+Google Gemini API
+  │
+  ▼
+Generated Email
+  │
+  ▼
+SQLite Database
+  │
+  ▼
+Analytics Dashboard
+```
+
+---
+
+# 🗄️ Database Design
+
+The application stores:
+
+| Field           | Description        |
+| --------------- | ------------------ |
+| id              | Unique Email ID    |
+| prompt          | User Input         |
+| tone            | Selected Tone      |
+| generated_email | AI Generated Email |
+| created_at      | Timestamp          |
+
+---
+
+# 📊 Dashboard Analytics
+
+The analytics module provides:
+
+### Total Emails Generated
+
+Tracks the number of emails generated.
+
+### Most Used Tone
+
+Identifies the most frequently selected tone.
+
+### Tone Distribution
+
+Displays usage frequency of each tone.
+
+### Recent Emails
+
+Shows recently generated emails.
+
+---
+
+# 🔌 API Endpoints
+
+## Health Check
+
+GET /
+
+Response:
+
+```json
+{
+  "message": "AI Email Assistant API Running"
+}
+```
+
+## Generate Email
+
+POST /generate
+
+Request:
+
+```json
+{
+  "prompt": "Write a professional leave request email",
+  "tone": "Professional"
+}
+```
+
+Response:
+
+```json
+{
+  "status": "success",
+  "generated_email": "Generated Email Content"
+}
+```
+
+---
+
+# 🚀 Installation
+
+## Clone Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/ravikiranediga/AI_Email_Assistant.git
+```
 
+```bash
 cd AI_Email_Assistant
 ```
 
-### Create Virtual Environment
+## Create Virtual Environment
 
 ```bash
 python -m venv venv
 ```
 
-### Activate Virtual Environment
+## Activate Virtual Environment
 
 Windows:
 
@@ -168,37 +266,35 @@ Windows:
 venv\Scripts\activate
 ```
 
-### Install Dependencies
+## Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
----
+## Configure Environment Variable
 
-## 🔑 Environment Variables
-
-Create a `.env` file:
+Create a .env file:
 
 ```env
-GOOGLE_API_KEY=YOUR_API_KEY
+GEMINI_API_KEY=YOUR_GEMINI_API_KEY
 ```
 
 ---
 
-## ▶️ Running the Backend
+# ▶️ Run Backend
 
 ```bash
 uvicorn api.main:app --reload
 ```
 
-Backend URL:
+Backend:
 
 ```text
 http://127.0.0.1:8000
 ```
 
-Swagger Documentation:
+Swagger Docs:
 
 ```text
 http://127.0.0.1:8000/docs
@@ -206,13 +302,13 @@ http://127.0.0.1:8000/docs
 
 ---
 
-## ▶️ Running the Frontend
+# ▶️ Run Frontend
 
 ```bash
 streamlit run app.py
 ```
 
-Frontend URL:
+Frontend:
 
 ```text
 http://localhost:8501
@@ -220,75 +316,37 @@ http://localhost:8501
 
 ---
 
-## 📊 Analytics Module
-
-The analytics system provides:
-
-* Total Emails Generated
-* Most Used Tone
-* Tone Distribution Visualization
-* Recent Email Activity
-
-This enables basic usage monitoring and user behavior analysis.
-
----
-
-## 🗄️ Database Design
-
-Table: emails
-
-| Column     | Type      |
-| ---------- | --------- |
-| id         | INTEGER   |
-| prompt     | TEXT      |
-| tone       | TEXT      |
-| email      | TEXT      |
-| created_at | TIMESTAMP |
-
----
-
-## 🔄 Application Workflow
-
-1. User enters email requirements.
-2. User selects tone.
-3. Streamlit sends request to FastAPI.
-4. FastAPI calls Gemini API.
-5. Gemini generates professional email.
-6. Response is returned to Streamlit.
-7. Email is stored in SQLite.
-8. Analytics dashboard updates automatically.
-
----
-
-## 🎯 Learning Outcomes
+# 🎯 Learning Outcomes
 
 Through this project:
 
-* Built REST APIs using FastAPI
-* Integrated Generative AI APIs
-* Developed interactive UIs using Streamlit
-* Worked with SQLite databases
-* Implemented analytics dashboards
-* Managed environment variables securely
-* Structured a full-stack AI application
+* Built a Full-Stack AI Application
+* Integrated Google Gemini API
+* Developed REST APIs using FastAPI
+* Implemented SQLite Database Operations
+* Created Interactive Streamlit UI
+* Designed Analytics Dashboard
+* Deployed Production Applications
+* Learned Cloud Deployment using Render and Streamlit Cloud
 
 ---
 
-## 🔮 Future Enhancements
+# 🔮 Future Enhancements
 
 * User Authentication
 * PostgreSQL Integration
+* Gmail Integration
 * PDF Export
-* Email Sending via SMTP
-* Multi-Language Support
-* Docker Deployment
-* Cloud Deployment (Render / Streamlit Cloud)
+* Email Categorization
+* Multi-Language Email Generation
+* User Profiles
+* Cloud Database Storage
 
 ---
 
-## 👨‍💻 Author
+# 👨‍💻 Author
 
-E Ravi Kiran
+**E Ravi Kiran**
 
 B.Tech – Computer Science (AI)
 
@@ -296,4 +354,16 @@ Sri Venkatesa Perumal College of Engineering
 
 GitHub: https://github.com/ravikiranediga
 
-LinkedIn: https://www.linkedin.com/in/ravikiranediga
+---
+
+# ⭐ Project Highlights
+
+* Full Stack AI Project
+* Gemini AI Integration
+* FastAPI Backend
+* Streamlit Frontend
+* SQLite Database
+* Analytics Dashboard
+* Cloud Deployment
+* REST API Architecture
+* Production Ready Workflow
