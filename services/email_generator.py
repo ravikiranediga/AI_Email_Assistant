@@ -2,17 +2,18 @@ import os
 
 from dotenv import load_dotenv
 from google import genai
-import google
-
-print("GOOGLE PATH:")
-print(google.__file__)
-
-from google import genai
 
 load_dotenv()
 
+api_key = os.getenv("GEMINI_API_KEY")
+
+if not api_key:
+    raise ValueError(
+        "GEMINI_API_KEY environment variable not found"
+    )
+
 client = genai.Client(
-    api_key=os.getenv("GEMINI_API_KEY")
+    api_key=api_key
 )
 
 
@@ -30,44 +31,44 @@ def generate_email(prompt, tone):
     }
 
     final_prompt = f"""
-    You are a professional business communication expert.
+You are a professional business communication expert.
 
-    Task:
-    Generate a complete ready-to-send email.
+Task:
+Generate a complete ready-to-send email.
 
-    Tone:
-    {tone}
+Tone:
+{tone}
 
-    Special Tone Instruction:
-    {tone_instruction.get(tone)}
+Special Tone Instruction:
+{tone_instruction.get(tone)}
 
-    User Requirement:
-    {prompt}
+User Requirement:
+{prompt}
 
-    Rules:
+Rules:
 
-    1. Do not use placeholders.
-    2. Do not write [Your Name] or [Company Name].
-    3. Generate realistic content.
-    4. Use proper business communication.
-    5. Keep email between 150 and 250 words.
-    6. Include:
-       - Subject
-       - Greeting
-       - Email Body
-       - Closing
-    7. Return only the email.
+1. Do not use placeholders.
+2. Do not write [Your Name] or [Company Name].
+3. Generate realistic content.
+4. Use proper business communication.
+5. Keep email between 150 and 250 words.
+6. Include:
+   - Subject
+   - Greeting
+   - Email Body
+   - Closing
+7. Return only the email.
 
-    Output Format:
+Output Format:
 
-    Subject:
+Subject:
 
-    Greeting:
+Greeting:
 
-    Body:
+Body:
 
-    Closing:
-    """
+Closing:
+"""
 
     response = client.models.generate_content(
         model="gemini-2.5-flash",
