@@ -38,6 +38,31 @@ The application also stores generated emails in SQLite and provides analytics su
 * Uses Google Gemini AI
 * Ready-to-send output
 
+
+## 📸 Application Screenshots
+
+### Home Page
+
+![Home Page](assets/home_page_.png)
+
+---
+
+### Email Generation
+
+![Generated Email](assets/email_generation_.png)
+
+---
+
+### Analytics Dashboard
+
+![Analytics](assets/analytics_dashboard_.png)
+
+---
+
+### History Tracking
+
+![History](assets/email_history_.png)
+
 ## Multiple Email Tones
 
 Supported tones:
